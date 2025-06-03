@@ -1,12 +1,12 @@
 from typing import Any
 
-from src.constant import Methode
+from src.constant import Methode,HTTPVersion
 
 
 class ParsingException(Exception): ...
 
 
-def parse_message(data: bytes) -> tuple[Methode, str, str, dict[str, Any], bytes]:
+def parse_message(data: bytes) -> tuple[Methode, HTTPVersion, str, dict[str, Any], bytes]:
     """Parse the received data
 
     Returns:
@@ -34,6 +34,6 @@ def parse_message(data: bytes) -> tuple[Methode, str, str, dict[str, Any], bytes
     return (meth, route, protocol, header, "\n".join(contents).strip().encode())
 
 
-def parse_first_line(line: str) -> tuple[Methode, str, str]:
-    meth,route,proto = line.split()
-    return Methode(meth),route,proto
+def parse_first_line(line: str) -> tuple[Methode, str, HTTPVersion]:
+    meth,route,httpvr = line.split()
+    return Methode(meth),route,HTTPVersion(httpvr)

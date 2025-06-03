@@ -8,3 +8,10 @@ def well_formatted_http_packet():
             User-Agent: Mozilla/5.0
 
             Hello Word"""
+
+@fixture(scope="session")
+def well_formatted_http_answer():
+    return b"""HTTP/1.1 200 OK
+Content-Type : text/plain
+
+Hello Word"""
