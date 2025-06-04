@@ -1,4 +1,7 @@
 - [ ] Take care of error that could happend in the HTTP parser
 - [ ] Add a HTTP formatter
-- [ ] Add a way to register endpoint
+- [ ] Add more status code
+- [X] Add a way to register endpoint
 - [ ] Add Middelware
+- [ ] Add async support
+- [ ] Multiple runner

@@ -3,6 +3,7 @@ from enum import StrEnum,Enum
 class StatusCode(Enum):
     OK200 = "200 OK"
     NOT_FOUND404 = "404 NOT FOUND"
+    UNPROCESSABLE422 = "422 Unprocessable Entity"
 
 class HTTPVersion(Enum):
     HTTP09 = "HTTP/0.9"
