@@ -11,7 +11,8 @@ def well_formatted_http_packet():
 
 @fixture(scope="session")
 def well_formatted_http_answer():
-    return b"""HTTP/1.1 200 OK
-Content-Type : text/plain
-
+    return b"""HTTP/1.1 200 OK\r
+Content-Type: text/plain\r
+Content-Length: 10\r
+\r
 Hello Word"""

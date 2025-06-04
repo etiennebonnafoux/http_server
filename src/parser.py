@@ -10,7 +10,7 @@ def parse_message(data: bytes) -> tuple[Methode, HTTPVersion, str, dict[str, Any
     """Parse the received data
 
     Returns:
-        tuple[Methode,str,str,dict[str,Any],bytes]: The Methode,route,protocol,header and content
+        tuple[Methode,HTTPVersion,str,dict[str,Any],bytes]: The Methode,HTTP Version,route,header and content
     """
     message = data.decode()
     lines = message.splitlines()

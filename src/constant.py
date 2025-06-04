@@ -1,7 +1,8 @@
 from enum import StrEnum,Enum
 
-class StatusCode(StrEnum):
-    OK = "200 OK"
+class StatusCode(Enum):
+    OK200 = "200 OK"
+    NOT_FOUND404 = "404 NOT FOUND"
 
 class HTTPVersion(Enum):
     HTTP09 = "HTTP/0.9"
