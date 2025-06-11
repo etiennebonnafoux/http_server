@@ -3,22 +3,31 @@ from src.constant import Methode, HTTPVersion, StatusCode
 from src.formatter import format_answer
 from src.enpoint import Endpoint
 from src.HttpInput import HTTPInput
+from src.middelware import MiddelWare
+from src.StaticFilesServer import StaticFilesServer
 import socket
+from pathlib import Path
 
 
 class HttpApp:
-    def __init__(self, host, port):
+    def __init__(self, host : str, port : int):
         self.endpoints: list[Endpoint] = []
+        self.middelware: list[MiddelWare] = []
+        self.static_file_handlers : list[StaticFilesServer] = []
         self.host = host
         self.port = port
 
     def register_funtion(self, func: Callable, endpoint: str, methode: Methode):
         self.endpoints.append(Endpoint(func, endpoint, methode))
 
+    def add_static_folder(self,path:Path):
+        self.static_file_handlers.append(StaticFilesServer(folder=path))
+
     def start(self):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.bind((self.host, self.port))
             s.listen(5)
+            print("Listening")
             while True:
                 conn, addr = s.accept()
                 with conn:

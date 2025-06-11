@@ -1,4 +1,3 @@
-from typing import Self
 from src.constant import Methode,HTTPVersion
 from dataclasses import dataclass
 import json
@@ -16,7 +15,7 @@ class HTTPInput:
 
 
     @classmethod
-    def from_bytes(data:bytes) -> "HTTPInput":
+    def from_bytes(cls,data:bytes) -> "HTTPInput":
         
         """Parse the received data
 

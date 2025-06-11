@@ -17,7 +17,7 @@ class Endpoint:
         for v in res.parameters.values():
             if v.annotation not in [str,int,bytes,float,UUID,datetime]:
                 raise TypeError(f"Unsopported types {v.annotation}")
-        return {k:v.annotation for k,v in res.parameters.items()}
+        return res
     
     def _validate_kwargs(self,**kwars) -> inspect.BoundArguments:
         return self.kwargs.bind(**kwars)
